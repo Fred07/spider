@@ -1,4 +1,3 @@
-# import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.selector import HtmlXPathSelector
 from scrapy.linkextractors import LinkExtractor
@@ -15,9 +14,9 @@ class NewSpider(CrawlSpider):
     ]
     rules = (
         # and follow links from them (since no callback means follow=True by default).
-        Rule(LinkExtractor(allow=(r'^http:\/\/technews\.tw\/page\/[2-5]', )),
-                            callback='parse_items',
-                            follow=False),
+        Rule(LinkExtractor(allow=(r'^http:\/\/technews\.tw\/page\/[2-5]',)),
+             callback='parse_items',
+             follow=False),
     )
 
     def parse_start_url(self, response):
@@ -26,7 +25,6 @@ class NewSpider(CrawlSpider):
     def parse_items(self, response):
         hxs = HtmlXPathSelector(response)
         for sel in hxs.select('//article'):
-
             item = SpiderNewItem()
 
             title = sel.select('.//tr/td[@class="maintitle"]//a/text()').extract()
