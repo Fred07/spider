@@ -7,7 +7,9 @@ class DCardSpider(CrawlSpider):
     name = "dcardspider"
     allowed_domains = ["www.dcard.tw"]
     start_urls = [
-        "https://www.dcard.tw/f/sex"
+        "https://www.dcard.tw/f/sex",
+        "https://www.dcard.tw/f/sex?latest=true",
+        "https://www.dcard.tw/f/sex/c/圖文",
         # "http://technews.tw"
     ]
     rules = (
